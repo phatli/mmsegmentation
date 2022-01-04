@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  mmseg:
+    image: phatli/projs:mmseg
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # For Display
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+      - type: bind
+        source: .
+        target: /home/user/mmseg
+    dns: 
+      - 8.8.8.8

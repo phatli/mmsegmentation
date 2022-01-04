@@ -1,0 +1,43 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/ubuntu
+{
+  "name": "U2004MMSegDevEnv",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "mmseg",
+  "workspaceFolder": "/home/user/mmseg",
+  "shutdownAction": "stopCompose",
+  "settings": {
+    "terminal.integrated.profiles.linux": {
+      "zsh": {
+        "path": "/bin/zsh"
+      }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "python.defaultInterpreterPath": "/home/user/miniconda/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.formatting.provider": "autopep8",
+    "python.analysis.extraPaths": [
+      "/home/user/mmseg",
+    ],
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "eamodio.gitlens",
+    "ms-toolsai.jupyter",
+    "christian-kohler.path-intellisense",
+    "sleistner.vscode-fileutils",
+    "exodiusstudios.comment-anchors",
+    "shd101wyy.markdown-preview-enhanced",
+    "njpwerner.autodocstring",
+    "esbenp.prettier-vscode",
+    "donjayamanne.githistory",
+    "yzhang.markdown-all-in-one",
+    "github.vscode-pull-request-github",
+    "elazarcoh.simply-view-image-for-python-debugging",
+  ],
+  "remoteUser": "user"
+}
