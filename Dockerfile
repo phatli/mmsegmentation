@@ -27,9 +27,8 @@ RUN git clone https://github.com/open-mmlab/mmdeploy.git \
     && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TENSORRT_DIR/lib \
     && mkdir -p build && cd build && cmake -DMMDEPLOY_TARGET_BACKENDS=trt .. \
     && make -j$(nproc)
-RUN git clone https://github.com/open-mmlab/mmsegmentation.git \
-    && cd ./mmsegmentation && pip install -e . --user \
-    && rm -rf ../mmsegmentation
+COPY ./entrypoint.sh /
+RUN sudo chmod +x /entrypoint.sh
 # Set the default command to zsh
-ENTRYPOINT [ "/bin/zsh" ]
-CMD ["-l"]
+ENTRYPOINT [ "/entrypoint.sh" ]
+CMD ["/bin/zsh"]
