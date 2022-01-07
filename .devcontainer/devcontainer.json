@@ -4,7 +4,7 @@
   "name": "U2004MMSegDevEnv",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "mmseg",
-  "workspaceFolder": "/home/user/mmseg",
+  "workspaceFolder": "/home/user",
   "shutdownAction": "stopCompose",
   "settings": {
     "terminal.integrated.profiles.linux": {
