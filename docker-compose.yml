@@ -20,6 +20,6 @@ services:
         target: /tmp/.X11-unix
       - type: bind
         source: .
-        target: /home/user/mmseg
+        target: /home/user/code/mmseg
     dns: 
       - 8.8.8.8

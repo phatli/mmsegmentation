@@ -1,4 +1,4 @@
 #!/bin/bash
-cd mmseg && pip install -e . --user
+cd /home/user/code/mmseg && pip install -e . --user
 cd 
 exec "$@"

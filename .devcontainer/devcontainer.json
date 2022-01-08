@@ -4,7 +4,7 @@
   "name": "U2004MMSegDevEnv",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "mmseg",
-  "workspaceFolder": "/home/user",
+  "workspaceFolder": "/home/user/code",
   "shutdownAction": "stopCompose",
   "settings": {
     "terminal.integrated.profiles.linux": {
@@ -19,7 +19,7 @@
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "autopep8",
     "python.analysis.extraPaths": [
-      "/home/user/mmseg",
+      "/home/user/code",
     ],
   },
   // Add the IDs of extensions you want installed when the container is created.

@@ -12,7 +12,7 @@ RUN sudo apt-get install -y ffmpeg libsm6 libxext6 ninja-build libglib2.0-0 \
 RUN pip install --no-cache-dir opencv-python timm pandas onnx onnxruntime-gpu \
     mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu111/torch1.9.0/index.html
 COPY --chown=user --from=0 /home/user/TensorRT-8.2.1.8 /home/user/TensorRT-8.2.1.8
-WORKDIR /home/user/
+WORKDIR /home/user
 RUN export TENSORRT_DIR=/home/user/TensorRT-8.2.1.8 \
     && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TENSORRT_DIR/lib \
     && pip install $TENSORRT_DIR/python/tensorrt-8.2.1.8-cp38-none-linux_x86_64.whl \
@@ -20,7 +20,7 @@ RUN export TENSORRT_DIR=/home/user/TensorRT-8.2.1.8 \
     && pip install $TENSORRT_DIR/graphsurgeon/graphsurgeon-0.4.5-py2.py3-none-any.whl \
     && echo "export TENSORRT_DIR=/home/user/TensorRT-8.2.1.8" >> /home/user/.zshrc \
     && echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$TENSORRT_DIR/lib" >> /home/user/.zshrc
-RUN git clone https://github.com/open-mmlab/mmdeploy.git \
+RUN mkdir code && cd code && git clone https://github.com/phatli/mmdeploy.git \
     && cd mmdeploy && git submodule update --init --recursive \
     && pip install -e . \
     && export TENSORRT_DIR=/home/user/TensorRT-8.2.1.8 \
