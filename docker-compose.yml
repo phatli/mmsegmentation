@@ -11,13 +11,7 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    # For Display
-    environment:
-      - DISPLAY=${DISPLAY}
     volumes:
-      - type: bind
-        source: /tmp/.X11-unix
-        target: /tmp/.X11-unix
       - type: bind
         source: .
         target: /home/user/code/mmseg

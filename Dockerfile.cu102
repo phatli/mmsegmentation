@@ -11,7 +11,7 @@ RUN sudo apt-get update && sudo apt-get upgrade -y \
     libxrender-dev build-essential libssl-dev gcc-7 g++-7 \
     && sudo rm -rf /var/lib/apt/lists/*
 RUN pip install --no-cache-dir opencv-python timm pandas onnx onnxruntime-gpu cmake \
-    mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu111/torch1.9.0/index.html
+    mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu102/torch1.9.0/index.html
 COPY --chown=user --from=0 /home/user/TensorRT-8.2.1.8 /home/user/TensorRT-8.2.1.8
 WORKDIR /home/user
 RUN export TENSORRT_DIR=/home/user/TensorRT-8.2.1.8 \
