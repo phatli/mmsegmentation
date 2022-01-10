@@ -20,6 +20,7 @@
     "python.formatting.provider": "autopep8",
     "python.analysis.extraPaths": [
       "/home/user/code",
+      "/home/user/.local/lib/python3.8/site-packages"
     ],
   },
   // Add the IDs of extensions you want installed when the container is created.

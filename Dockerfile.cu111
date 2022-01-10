@@ -27,6 +27,7 @@ RUN mkdir code && cd code && git clone https://github.com/phatli/mmdeploy.git \
     && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TENSORRT_DIR/lib \
     && mkdir -p build && cd build && cmake -DMMDEPLOY_TARGET_BACKENDS=trt .. \
     && make -j$(nproc)
+ENV PATH=$PATH:/home/user/.local/bin
 COPY ./entrypoint.sh /
 RUN sudo chmod +x /entrypoint.sh
 # Set the default command to zsh

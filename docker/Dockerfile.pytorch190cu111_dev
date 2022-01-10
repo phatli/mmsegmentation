@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.2.0-base-ubuntu20.04
+FROM nvidia/cuda:11.1.1-base-ubuntu20.04
 
 # Install some basic utilities
 RUN apt-get update && apt-get install -y \
@@ -10,7 +10,10 @@ RUN apt-get update && apt-get install -y \
     libx11-6 \
     tmux \
     wget \
-    vim \
+    vim \    
+    python3.8 \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3.8 10 \
+    && apt-get install -q -y --no-install-recommends pip \
     && rm -rf /var/lib/apt/lists/*
 
 # setup timezone
@@ -46,23 +49,12 @@ RUN sudo chsh -s /bin/zsh
 # Install Miniconda and Python 3.8
 ENV CONDA_AUTO_UPDATE_CONDA=false
 ENV PATH=/home/user/miniconda/bin:$PATH
-RUN curl -sLo ~/miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-py38_4.8.3-Linux-x86_64.sh \
-    && chmod +x ~/miniconda.sh \
-    && ~/miniconda.sh -b -p ~/miniconda \
-    && rm ~/miniconda.sh \
-    && conda install -y python\
-    && conda clean -ya
 
 # Install pytorch
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir \
-    torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
-
-# conda install dependencies
-RUN conda install -y -c anaconda pylint \
-    && conda install -y -c conda-forge autopep8 \
-    && conda install -y ipykernel \
-    && conda clean -ya
+    torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html \
+    && pip install --no-cache-dir pylint autopep8 ipykernel numpy
 
 # set tmux
 RUN sudo echo "set-option -g default-shell /bin/zsh" >> ~/.tmux.conf

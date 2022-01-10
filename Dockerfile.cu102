@@ -21,6 +21,7 @@ RUN export TENSORRT_DIR=/home/user/TensorRT-8.2.1.8 \
     && pip install $TENSORRT_DIR/graphsurgeon/graphsurgeon-0.4.5-py2.py3-none-any.whl \
     && echo "export TENSORRT_DIR=/home/user/TensorRT-8.2.1.8" >> /home/user/.zshrc \
     && echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$TENSORRT_DIR/lib" >> /home/user/.zshrc
+ENV PATH=$PATH:/home/user/.local/bin
 RUN mkdir code && cd code && git clone https://github.com/phatli/mmdeploy.git \
     && cd mmdeploy && git submodule update --init --recursive \
     && pip install -e . \
